@@ -24,10 +24,14 @@ export class ArticleService {
     }
 
     article.slug = this.getSlug(createArticleDto.title);
-    
+
     article.author = currentUser;
 
     return await this.articleRepository.save(article);
+  }
+
+  async findBySlug(slug: string): Promise<ArticleEntity> {
+    return await this.articleRepository.findOne({ where: { slug } });
   }
 
   buildArticleResponse(article: ArticleEntity): ArticleResponseInterface {
