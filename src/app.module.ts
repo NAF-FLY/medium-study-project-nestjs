@@ -1,3 +1,4 @@
+import { ProfileModule } from './profile/profile.module';
 import { ArticleModule } from './article/article.module';
 import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { AppController } from '@app/app.controller';
@@ -10,11 +11,11 @@ import { AuthMiddleware } from './user/middleware/auth.middleware';
 
 @Module({
   imports: [
-    ArticleModule,
     TypeOrmModule.forRoot(ormconfig),
     TagModule,
     UserModule,
-    ArticleModule
+    ArticleModule,
+    ProfileModule,
   ],
   controllers: [AppController],
   providers: [AppService],
